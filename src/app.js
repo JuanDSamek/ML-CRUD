@@ -25,11 +25,13 @@ app.set('views', path.join(__dirname, '/views')); // Define la ubicación de la 
 
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
-const mainRouter = require('./routes/main'); // Rutas main
-const productsRouter = require('./routes/products'); // Rutas /products
+const otherRouter = require('./routes/other.routes'); // Rutas main
+const productsRouter = require('./routes/products.routes'); // Rutas /products
+const adminRouter = require('./routes/admin.routes');
 
-app.use('/', mainRouter);
-app.use('/products', productsRouter);
+app.use('/', otherRouter);
+app.use('/productos', productsRouter);
+app.use('/admin', adminRouter)
 
 
 
@@ -46,7 +48,7 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('other/error');
 });
 
 // ************ exports app - dont'touch ************
